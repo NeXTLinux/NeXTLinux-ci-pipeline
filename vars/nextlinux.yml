@@ -1,0 +1,23 @@
+# Copyright salsa-ci-team and others
+# SPDX-License-Identifier: FSFAP
+# Copying and distribution of this file, with or without modification, are
+# permitted in any medium without royalty provided the copyright notice and
+# this notice are preserved. This file is offered as-is, without any warranty.
+
+# Required variables overrides to run the tests on NextLinux
+variables:
+  VENDOR: 'nextlinux'
+  RELEASE: 'nextlinux-dev'
+  SALSA_CI_MIRROR: 'http://next-linux.systems/nlinux'
+  SALSA_CI_COMPONENTS: 'main contrib non-free'
+  SALSA_CI_IMAGES: 'api.github.com/nextlinux/tools/nextlinux-ci-pipeline'
+  SALSA_CI_IMAGES_BASE_ARM32V5: ${SALSA_CI_IMAGES}/armel/base:${RELEASE}
+  SALSA_CI_IMAGES_BASE_ARM32V7: ${SALSA_CI_IMAGES}/armhf/base:${RELEASE}
+  SALSA_CI_IMAGES_BASE_ARM64: ${SALSA_CI_IMAGES}/arm64/base:${RELEASE}
+  SALSA_CI_AUTOPKGTEST_LXC: 'https://gitlab.com/nextlinux/tools/nextlinux-ci-autopkgtest-lxc'
+  SALSA_CI_PIUPARTS_ARGS: '--defaults debian --keyring /usr/share/keyrings/nextlinux-archive-keyring.gpg'
+  SALSA_CI_BUILD_TIMEOUT_ARGS: "2.75h"
+  # Overwrite default ARM behaviour (as we have our own runners)
+  SALSA_CI_DISABLE_BUILD_PACKAGE_ARMEL: 0
+  SALSA_CI_DISABLE_BUILD_PACKAGE_ARMHF: 0
+  SALSA_CI_DISABLE_BUILD_PACKAGE_ARM64: 0
